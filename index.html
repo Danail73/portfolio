@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Данаил Маринов — Портфолио</title>
+<meta name="description" content="Портфолио на Данаил Маринов — JARVIS, Yu-Gi-Oh! Deck Builder, Green Care.">
+<style>
+  :root{
+    --bg:#141b2e;
+    --surface:#1b2440;
+    --surface-2:#202c4d;
+    --text:#eef1f7;
+    --text-dim:#9aa4c0;
+    --line:#2a3458;
+    --blue:#5b9dff;
+    --blue-soft:rgba(91,157,255,0.14);
+    --purple:#a996f8;
+    --purple-soft:rgba(169,150,248,0.16);
+    --on-blue:#0d1526;
+  }
+
+  @media (prefers-reduced-motion: no-preference){ html{ scroll-behavior:smooth; } }
+
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--text); font-family:'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; line-height:1.65; }
+  h1,h2,h3{ font-family:'Plus Jakarta Sans', sans-serif; font-weight:800; text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  a{ color:inherit; }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding-inline:32px; }
+
+  .topbar{ position:sticky; top:0; z-index:20; background:rgba(20,27,46,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .topbar .wrap{ display:flex; align-items:center; justify-content:space-between; height:68px; gap:16px; }
+  .logo{ font-weight:700; font-size:17px; }
+  nav{ display:flex; align-items:center; gap:28px; }
+  nav a{ font-size:15px; text-decoration:none; color:var(--text-dim); transition:color .15s; }
+  nav a:hover, nav a.active{ color:var(--text); }
+  .nav-cta{ background:var(--blue); color:var(--on-blue); padding:9px 18px; border-radius:8px; font-weight:600; font-size:14px; text-decoration:none; }
+  .nav-cta:hover{ opacity:0.9; }
+
+  .hero{ padding:100px 0 80px; }
+  .hero .eyebrow{ display:inline-block; color:var(--blue); font-weight:600; font-size:15px; margin-bottom:18px; }
+  .hero h1{ font-size:clamp(42px,6vw,60px); line-height:1.1; max-width:760px; }
+  .btn-row{ display:flex; gap:14px; margin-top:36px; flex-wrap:wrap; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; font-size:15px; font-weight:600; text-decoration:none; padding:13px 24px; border-radius:9px; transition:transform .12s, opacity .15s; border:none; cursor:pointer; }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--blue); color:var(--on-blue); }
+  .btn-primary:hover{ opacity:0.92; }
+  .btn-ghost{ border:1px solid var(--line); color:var(--text); background:transparent; }
+  .btn-ghost:hover{ border-color:var(--blue); color:var(--blue); }
+
+  section{ padding:72px 0; border-top:1px solid var(--line); }
+  .tag-label{ display:inline-block; color:var(--blue); font-weight:600; font-size:14px; letter-spacing:0.02em; margin-bottom:12px; }
+  h2.section-title{ font-size:32px; margin-bottom:40px; }
+
+  .about-grid{ display:grid; grid-template-columns:1.5fr 1fr; gap:48px; align-items:start; }
+  .about-grid p{ font-size:17px; color:var(--text-dim); max-width:62ch; }
+  .facts-card{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:8px 24px; }
+  .fact{ padding:18px 0; border-bottom:1px solid var(--line); }
+  .fact:last-child{ border-bottom:none; }
+  .fact .k{ font-size:13px; color:var(--text-dim); margin-bottom:4px; }
+  .fact .v{ font-size:16px; font-weight:600; }
+
+  .skills-intro{ font-size:15.5px; color:var(--text-dim); max-width:75ch; margin-bottom:36px; }
+  .skill-group + .skill-group{ margin-top:40px; }
+  .group-head{ display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+  .skill-group h3{ font-size:14px; letter-spacing:0.04em; text-transform:uppercase; color:var(--purple); background:var(--purple-soft); display:inline-block; padding:6px 14px; border-radius:999px; font-weight:700; }
+  .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; }
+  .skill-card{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px; }
+  .skill-card .name{ font-size:17px; font-weight:700; }
+  .skill-card .note{ font-size:13.5px; color:var(--text-dim); margin-top:8px; }
+
+  .project{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:36px; margin-bottom:24px; }
+  .project-head{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
+  .project h3{ font-size:26px; }
+  .badge{ font-size:12.5px; font-weight:700; padding:6px 14px; border-radius:999px; white-space:nowrap; }
+  .badge.blue{ background:var(--blue-soft); color:var(--blue); }
+  .badge.purple{ background:var(--purple-soft); color:var(--purple); }
+  .project .tagline{ color:var(--text-dim); font-size:15.5px; margin-bottom:28px; max-width:70ch; }
+
+  .photo-grid{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:28px; }
+  .photo-thumb{ height:340px; max-width:100%; border-radius:12px; overflow:hidden; background:var(--surface-2); border:1px solid var(--line); flex:none; }
+  .photo-thumb img{ height:100%; width:auto; max-width:100%; object-fit:contain; display:block; }
+
+  .field{ margin-bottom:22px; }
+  .field:last-child{ margin-bottom:0; }
+  .field .flabel{ font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; color:var(--blue); margin-bottom:8px; }
+  .field p, .field li{ font-size:15.5px; color:var(--text); line-height:1.6; }
+  .field ul{ margin:0; padding-left:20px; }
+  .field li{ margin-bottom:5px; }
+
+  .contact-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; }
+  .contact-card{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:22px 24px; transition:border-color .15s; }
+  .contact-card:hover{ border-color:var(--blue); }
+  .contact-card .k{ font-size:13px; color:var(--text-dim); margin-bottom:6px; }
+  .contact-card .v{ font-size:16px; font-weight:600; }
+
+  footer{ padding:36px 0 56px; color:var(--text-dim); font-size:14px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+  @media (max-width:760px){
+    .about-grid{ grid-template-columns:1fr; }
+    .topbar .wrap{ height:auto; flex-wrap:wrap; padding-block:12px; row-gap:10px; }
+    nav{ gap:12px; flex-wrap:wrap; row-gap:8px; width:100%; }
+    .hero{ padding:72px 0 56px; }
+    .project{ padding:26px; }
+  }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+</head>
+<body>
+
+<header class="topbar"><div class="wrap">
+  <span class="logo">Данаил Маринов</span>
+  <nav>
+    <a href="#about" data-nav>За мен</a>
+    <a href="#skills" data-nav>Умения</a>
+    <a href="#projects" data-nav>Проекти</a>
+    <a href="#contact" class="nav-cta">Контакти</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+
+  <section class="hero" style="border-top:none;" id="top">
+    <h1>Данаил Венциславов Маринов</h1>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#projects">Виж проектите</a>
+      <a class="btn btn-ghost" href="#contact">Свържи се с мен</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <span class="tag-label">За мен</span>
+    <h2 class="section-title">Кратка биография</h2>
+    <div class="about-grid">
+      <p>Казвам се Данаил Венциславов Маринов и в момента съм втори курс във Факултета по Математика и Информатика(ФМИ) на Софийски Университет. Завършил съм специалност Софтуерно Инженерство в Математическа имназия "Академик Кирил Попов". Основният ми интерес към програмиране е разработване на интересни и креативни проекти, затова и те варират от автоматична система за грижа към растения,  web приложения за създаване на Yu-Gi-Oh тестета до AI гласов асистент, наподобяващ JARVIS от "Железния човек". Въпреки тяхното разнообразие обаче всеки мой проект има своята практична първопричина. Харесва ми да работя както на frontend, така и на backend ниво — това не е ограничение за мен, стига да проектирам архитектура, да решавам нетривиални технически проблеми и да довеждам идеите до завършен, работещ продукт. По тази причина основната ми цел за развитие е по-скоро да получавам повече знания и умения, за да имам възможност да проектирам все по-сложни проекти. През последните 3 години от образованието ми в Математическата гимназия в Пловдив имахме задължение да прекарваме по определен брой часове стаж в реална фирма. Така се запознах с фирмата LogicSoft, в която съм стажант и в момента.</p>
+      <div class="facts-card">
+        <div class="fact"><div class="k">Фокус</div><div class="v">[Пълен стек: уеб, мобилни и desktop приложения]</div></div>
+        <div class="fact"><div class="k">Интереси</div><div class="v">[AI асистенти, игри, IoT автоматизация]</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <span class="tag-label">Умения</span>
+    <h2 class="section-title">Технически умения</h2>
+    <p class="skills-intro">Освен уменията по-долу, работя и с мениджъри на пакети като npm и pnpm, платформи за мобилна разработка като Android Studio и Expo, Jenkins за автоматизирано тестване, както и C++ за по-ниско ниво и университетски проекти.</p>
+
+    <div class="skill-group">
+      <div class="group-head"><h3>Frontend &amp; мобилни</h3></div>
+      <div class="skills-grid">
+        <div class="skill-card"><div class="name">JavaScript / TypeScript</div><div class="note">React 19 + TS SPA — Yu-Gi-Oh! Deck Builder</div></div>
+        <div class="skill-card"><div class="name">React</div><div class="note">Компонентна архитектура, hooks, Vite</div></div>
+        <div class="skill-card"><div class="name">React Native</div><div class="note">Мобилно приложение — Green Care</div></div>
+        <div class="skill-card"><div class="name">Flutter</div><div class="note">Pos система за фирма Popov</div></div>
+        <div class="skill-card"><div class="name">C#</div><div class="note">Училищни проекти и първи стъпки към самостоятелни проекти</div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="group-head"><h3>Backend &amp; системи</h3></div>
+      <div class="skills-grid">
+        <div class="skill-card"><div class="name">C#</div><div class="note">Училищни проекти и първи стъпки към самостоятелни проекти</div></div>
+        <div class="skill-card"><div class="name">PHP</div><div class="note">Проекти във фирмата LogicSoft</div></div>
+        <div class="skill-card"><div class="name">Работа с MariaDB, Node Js и Appwrite</div><div class="note">Мобилно приложение Green Care, проекти във фирмата LogicSoft</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <span class="tag-label">Проекти</span>
+    <h2 class="section-title">Какво съм изградил</h2>
+
+    <article class="project" id="project-jarvis">
+      <div class="project-head"><h3>JARVIS</h3><span class="badge blue">Local &amp; offline</span></div>
+      <p class="tagline">Гласов асистент, който управлява компютъра и останали свързани устройства без облачен API.</p>
+      <div class="field"><div class="flabel">Проблем и цел</div><p>Исках да създам AI гласов асистент, наподобяващ Siri на Apple, но с много по-широки възможности — да контролира не само компютъра ми, а и други свързани с него устройства (като за начало телефона), без да зависи от облачна услуга. Избрах името JARVIS като препратка към асистента от „Железния човек“ — идеята беше да имам нещо подобно у дома: персонален асистент, който разбира контекста и изпълнява реални действия, а не просто отговаря на въпроси. Офлайн работата беше съществена част от целта — исках по-добра поверителност на личните данни, по-ниска латентност и независимост от интернет връзката, вместо да разчитам на външен API.</p></div>
+      <div class="field"><div class="flabel">Технологии</div><ul>
+        <li>Python</li>
+        <li>Ollama — локален LLM (qwen2.5:7b) на GPU (RTX 3050)</li>
+        <li>Разпознаване на реч (непрекъснато слушане)</li>
+        <li>AT-SPI — универсален контрол на приложения</li>
+      </ul></div>
+      <div class="field"><div class="flabel">Архитектура</div><p>Системата е изградена от няколко самостоятелни модула, които комуникират помежду си. Локален inference сървър хоства езиковия модел (мигриран от Anthropic API към локален Ollama модел) и изпълнява tool-calling логиката, която превежда разпознатата команда в конкретно действие; модул за непрекъснато гласово слушане следи постоянно за гласовата команда и подава разпознатия текст към модела; модул за универсален контрол на приложения през AT-SPI изпълнява решенията на модела върху отворените програми на компютъра. В момента разработвам допълнителен модул за свързаност с други устройства (сървър/агент архитектура през MQTT), за да може JARVIS да управлява и устройства извън самия компютър, като телефона ми.</p></div>
+    </article>
+
+    <article class="project" id="project-ygo">
+      <div class="project-head"><h3>Yu-Gi-Oh! Deck Builder</h3><span class="badge purple">Live — без бекенд</span></div>
+      <p class="tagline">Браузърно приложение за изграждане на тестета за игра с карти.</p>
+      <div class="photo-grid"><div class="photo-thumb"><img src="assets/ygo.png" alt="Yu-Gi-Oh! Deck Builder"></div></div>
+      <div class="field"><div class="flabel">Проблем и цел</div><p>Исках да създам приложение, в което мога лесно и бързо да изграждам тестета за играта Yu-Gi-Oh!, с възможност за експорт във формати, позволяващи списъкът да бъде копиран директно в симулатори като Yugioh Nexus, както и списъци за закупуване на карти в CardMarket. Причината беше, че съществуващите инструменти по това време бяха или твърде претрупани с функции, които не ми трябваха, или просто не пасваха на начина, по който аз подреждам и тествам тестета — затова реших да си направя моя собствена версия, скроена точно по моите нужди.</p></div>
+      <div class="field"><div class="flabel">Технологии</div><ul>
+        <li>React 19 + TypeScript</li>
+        <li>Vite</li>
+        <li>Service Worker (кеширане на изображения)</li>
+        <li>Публично API за данни за картите (взето от Github и подсигурено от YugiohProDeck за общо ползване</li>
+      </ul></div>
+      <div class="field"><div class="flabel">Архитектура</div><p>Приложението е напълно клиентско SPA, без собствен бекенд — всички данни за картите идват направо от публичното API. Service Worker кешира изображенията на картите локално, за да се спази политиката на доставчика и картите да не се hotlink-ват директно (което би довело до блокиране на IP адреса). Едно от по-нетривиалните предизвикателства беше, че кешираните мрежови отговори са „opaque“ — браузърът не дава достъп нито до статус кода, нито до тялото им — затова се наложи да се доверя на тях директно, вместо да ги валидирам по обичайния начин. Форматът за износ на тестетата (брой + име на картата) също мина през няколко итерации, докато стигна до нещо, което работи коректно с имената на картите, съдържащи специални символи.</p></div>
+    </article>
+
+    <article class="project" id="project-plantcare">
+      <div class="project-head"><h3>Green Care</h3><span class="badge blue">Прототип</span></div>
+      <p class="tagline">IoT система за автоматизирана грижа за растение — сензорна саксия + мобилно приложение.</p>
+      <div class="photo-grid">
+        <div class="photo-thumb"><img src="assets/green-care-1.png" alt="Green Care — начален екран"></div>
+        <div class="photo-thumb"><img src="assets/green-care-2.png" alt="Green Care — контролен панел"></div>
+      </div>
+      <div class="field"><div class="flabel">Проблем и цел</div><p>Исках растението ми да получава грижа дори когато нямам време или забравям да го полея — затова реших да изградя система, която сама следи условията около него (температура, влажност на въздуха, светлина) и може дистанционно да включва помпата за вода и UV лампата вместо мен. Целта беше не просто еднократно наблюдение, а история на показанията във времето, за да виждам как се променят условията през деня.</p></div>
+      <div class="field"><div class="flabel">Технологии</div><ul>
+        <li>Хардуер — саксия със сензори за температура, влажност и светлина, водна помпа, UV лампа</li>
+        <li>MQTT — комуникация между сензорите/изпълнителите и приложението</li>
+        <li>Appwrite — бекенд и база данни за историята на показанията</li>
+        <li>React Native — мобилно приложение</li>
+      </ul></div>
+      <div class="field"><div class="flabel">Архитектура</div><p>Сензорите в саксията публикуват показанията си по MQTT; Appwrite служи като бекенд и съхранява както текущите, така и историческите стойности в база данни. React Native приложението следи сензорите на живо, показва графика с историята на показанията и изпраща обратно команди по MQTT, за да включва или изключва помпата за вода и UV лампата. Проектирах и изградих целия стек сам — от свързването на хардуера и изпълнителите, през MQTT комуникацията и модела на данните в Appwrite, до мобилното приложение за наблюдение и управление.</p></div>
+    </article>
+  </section>
+
+  <section id="contact">
+    <span class="tag-label" style="margin-bottom:28px;">Контакти</span>
+    <div class="contact-grid">
+      <div class="contact-card"><div class="k">GitHub</div><div class="v">github.com/Danail73</div></div>
+      <div class="contact-card"><div class="k">Телефон</div><div class="v">0884230196</div></div>
+      <div class="contact-card"><div class="k">Имейл</div><div class="v">[имейл за контакт]</div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>&copy; <span id="year"></span> Данаил Маринов</span>
+  <span>Лично портфолио</span>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav a[data-nav]'));
+  var sections = links.map(function(l){ return document.querySelector(l.getAttribute('href')); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (!entry.isIntersecting) return;
+      var id = '#' + entry.target.id;
+      links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href') === id); });
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(function(s){ if (s) io.observe(s); });
+</script>
+</body>
+</html>
